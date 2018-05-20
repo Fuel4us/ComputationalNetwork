@@ -62,7 +62,7 @@ public class HTTPRequest extends Thread {
                         }
 
                         if (!httpResponse.setContentFromFile(path)) {
-                            httpResponse.setContentFromString("<html><body><h1>404 File not found</h1></body></html>", "text/html");
+                            httpResponse.setContentFromString("<html><body><h1>404 File Not Found</h1></body></html>", "text/html");
                             httpResponse.setResponseStatus("404 Not Found");
                         }
                     }
@@ -82,8 +82,10 @@ public class HTTPRequest extends Thread {
                     String[] cmd = httpRequest.getURI().split("/");
                     if (cmd.length == 3) {
                         HTTPServer.removeWall(java.net.URLDecoder.decode(cmd[2], "UTF-8"));
+                        httpResponse.setResponseStatus("200 Ok");
                     } else if (cmd.length == 4) {
                         HTTPServer.removeMessage(Integer.parseInt(cmd[3]), java.net.URLDecoder.decode(cmd[2], "UTF-8"));
+                        httpResponse.setResponseStatus("200 Ok");
                     }
                     break;
 

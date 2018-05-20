@@ -14,14 +14,13 @@ import java.util.Objects;
  */
 public class Message implements Serializable {
 
-    private final int id;
+    
     private String messageContent;
     
-    private static int ID_COUNT=0;
+    
     
     public Message(String messageContent){
-        Message.ID_COUNT++;
-        this.id=ID_COUNT;
+        
         this.messageContent= messageContent;
         
     }
@@ -36,9 +35,8 @@ public class Message implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + this.id;
-        hash = 97 * hash + Objects.hashCode(this.messageContent);
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.messageContent);
         return hash;
     }
 
@@ -54,14 +52,13 @@ public class Message implements Serializable {
             return false;
         }
         final Message other = (Message) obj;
-        if (this.id != other.id) {
-            return false;
-        }
         if (!Objects.equals(this.messageContent, other.messageContent)) {
             return false;
         }
         return true;
     }
+
+    
 
     @Override
     public String toString() {
